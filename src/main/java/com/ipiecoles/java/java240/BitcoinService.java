@@ -1,5 +1,7 @@
 package com.ipiecoles.java.java240;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 
 public class BitcoinService {
@@ -7,6 +9,15 @@ public class BitcoinService {
     private Double rate = null;
 
     private Boolean forceRefresh = false;
+
+    @Autowired
+    private WebPageManager webPageManager;
+
+
+
+    public BitcoinService() {
+
+    }
 
     /**
      * Méthode qui renvoie le cours du Bitcoin
@@ -42,4 +53,6 @@ public class BitcoinService {
         return prixEnEuro / rate;
     }
 
+    public void setForceRefresh(boolean b) {
+    }
 }
