@@ -2,6 +2,7 @@ package com.ipiecoles.java.java240;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,9 @@ public class ProduitManager {
 
 
     private List<Produit> produits = new ArrayList<>();
+
+    @Value("${catalogue.url}")
+    private String catalogueUrl;
 
     @Autowired
     private WebPageManager webPageManager;

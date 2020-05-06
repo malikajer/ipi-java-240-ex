@@ -1,19 +1,26 @@
 package com.ipiecoles.java.java240;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan(basePackages = "com.ipiecoles.java.java240")
+@PropertySource("classpath:application.properties")
 public class SpringConfig {
-    @Bean
-    @Scope("singleton")//équivalent à ne rien mettre ou mettre @Scope("")
-    @Qualifier("cache")
-    public BitcoinService bitcoinService() {
-        System.out.println("Instantiation du bean BitcoinService par Spring");
-        BitcoinService bitcoinService = new BitcoinService(/*webPageManager()*/);
-        return bitcoinService;
-    }
+
+    @Value("${bitcoinService.forceRefresh}")
+    private Boolean forceRefresh;
+
+   // @Bean
+   // @Scope("singleton")//équivalent à ne rien mettre ou mettre @Scope("")
+   // @Qualifier("cache")
+   // public BitcoinService bitcoinService() {
+   //     System.out.println("Instantiation du bean BitcoinService par Spring");
+    //    BitcoinService bitcoinService = new BitcoinService(/*webPageManager()*/);
+    //    return bitcoinService;
+  //  }
+
     @Bean
     @Primary
     public BitcoinService bitcoinServiceNoCache(){
